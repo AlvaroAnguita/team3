@@ -8,7 +8,7 @@ import com.prueba.models.dao.ClienteDao;
 import com.prueba.models.entity.Cliente;
 
 @Service
-public class ClienteServideImpl implements ClienteService{
+public class ClienteServiceImpl implements ClienteService{
 	@Autowired
 	private ClienteDao clienteDao;
 	

@@ -29,8 +29,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.formacionjava.springboot.apirest.models.entity.Cliente;
-import com.formacionjava.springboot.apirest.models.service.ClienteService;
+import com.prueba.models.entity.Cliente;
+import com.prueba.service.ClienteService;
+
+
 
 @RestController
 @RequestMapping("/api")
@@ -157,11 +159,9 @@ public class ClienteRestController {
 			clienteActual.setNombre(cliente.getNombre());
 			clienteActual.setEmail(cliente.getEmail());
 			clienteActual.setTelefono(cliente.getTelefono());
-			if(cliente.getCreatedAt()!= null) {
-				clienteActual.setCreatedAt(cliente.getCreatedAt());
-			}else {
-				clienteActual.setCreatedAt(clienteActual.getCreatedAt());
-			}
+			clienteActual.setDireccion(cliente.getDireccion());
+			clienteActual.setCodigoP(cliente.getCodigoP());
+			
 			
 			clienteUpdate=clienteService.save(clienteActual);
 		} catch (DataAccessException e){
