@@ -32,6 +32,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.prueba.models.entity.Cliente;
 import com.prueba.service.ClienteService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 
 
 @RestController
@@ -42,12 +45,18 @@ public class ClienteRestController {
 	
 	//Petición GET
 	@GetMapping("/clientes")
+	@ApiOperation(value = "Devuelve el listado completo de los clientes",
+	  notes = "Devuelve el listado completo con los datos de los clientes", 
+	  response = Cliente.class)
 	public List<Cliente> index() {
 		return clienteService.findAll();
 	}
 	
 	@GetMapping("/clientes/{id}")
-	public ResponseEntity<?>show(@PathVariable Long id){
+	@ApiOperation(value = "Devuelve la informacion del cliente dado",
+	  notes = "Devolvera toda la informacion relativa al identificador del cliente dado", 
+	  response = Cliente.class)
+	public ResponseEntity<?>show(@ApiParam(value = "El id del cliente que se quiere mostrar",required=true) @PathVariable Long id){
 		Cliente cliente= null;
 		Map<String,Object> response= new HashMap<>();
 		
@@ -66,7 +75,10 @@ public class ClienteRestController {
 	}
 	
 	@GetMapping("/uploads/img/{nombreFoto:.+}")
-	public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto){
+	@ApiOperation(value = "Muestra la imagen que se ha pasado",
+	  notes = "Dado el nombre de la imagen se mostrara la imagen en el navegador", 
+	  response = Cliente.class)
+	public ResponseEntity<Resource> verFoto(@ApiParam(value = "Nombre de la foto a mostrar",required=true) @PathVariable String nombreFoto){
 		Path rutaArchivo= Paths.get("uploads").resolve(nombreFoto).toAbsolutePath();
 		
 		Resource recurso = null;
@@ -87,7 +99,10 @@ public class ClienteRestController {
 	}
 	
 	@PostMapping("/clientes")
-	public ResponseEntity<?>create(@RequestBody Cliente cliente){
+	@ApiOperation(value = "Crea un cliente",
+    notes = "Se recibe la informacion relativa a un cliente para crearlo y almacenarlo en la base de datos", 
+    response = Cliente.class)
+	public ResponseEntity<?>create(@ApiParam(value = "La informacion del cliente que se va a crear",required=true) @RequestBody Cliente cliente){
 		Cliente clienteNew=null;
 		Map<String, Object> response= new HashMap<>();
 		
@@ -104,7 +119,10 @@ public class ClienteRestController {
 	}
 	
 	@PostMapping("/clientes/upload")
-	public ResponseEntity<?>upload(@RequestParam("archivo") MultipartFile archivo, @RequestParam("id") Long id){
+	@ApiOperation(value = "Sube una imagen de un usuario dado",
+    notes = "Dada una imagen y el identificador del cliente al cual se le asociara la imagen y se subira a la carpeta uploads", 
+    response = Cliente.class)
+	public ResponseEntity<?>upload(@ApiParam(value = "El archivo que se va a subir",required=true)@RequestParam("archivo") MultipartFile archivo,@ApiParam(value = "El id del cliente al cual se asociara la imagen",required=true) @RequestParam("id") Long id){
 		Map<String, Object> response= new HashMap<>();
 		
 		Cliente cliente= clienteService.findById(id);
@@ -143,7 +161,10 @@ public class ClienteRestController {
 	
 	
 	@PutMapping("/clientes/{id}")
-	public ResponseEntity<?> update(@RequestBody Cliente cliente, @PathVariable Long id){
+	@ApiOperation(value = "Actualiza la informacion de un cliente",
+    notes = "Dado un cliente y su informacion se actualizara la informacion necesaria en la base de datos", 
+    response = Cliente.class)
+	public ResponseEntity<?> update(@ApiParam(value = "La informacion actualizada del cliente que se desea actualizar",required=true)@RequestBody Cliente cliente,@ApiParam(value = "Identificador del cliente a actualizar",required=true) @PathVariable Long id){
 		Cliente clienteActual=clienteService.findById(id);
 		
 		Cliente clienteUpdate=null;
@@ -176,7 +197,10 @@ public class ClienteRestController {
 
 	
 	@DeleteMapping("clientes/{id}")
-	public ResponseEntity<?> delete(@PathVariable Long id){
+	@ApiOperation(value = "Elimina un cliente",
+    notes = "Dado el identificador de un cliente, se eliminara ese cliente ", 
+    response = Cliente.class)
+	public ResponseEntity<?> delete(@ApiParam(value = "Identificador del cliente que se va a eliminar",required=true)@PathVariable Long id){
 		Map<String,Object> response= new HashMap<>();
 		
 		try {
@@ -192,6 +216,9 @@ public class ClienteRestController {
 	}
 	
 	@DeleteMapping("clientes")
+	@ApiOperation(value = "Elimina todos los clientes",
+    notes = "Se eliminaran todos los clientes de la base de datos", 
+    response = Cliente.class)
 	public ResponseEntity<?> deleteAll(){
 		Map<String,Object> response= new HashMap<>();
 		
