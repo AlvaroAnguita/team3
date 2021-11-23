@@ -190,4 +190,23 @@ public class ClienteRestController {
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
+	
+	@DeleteMapping("clientes")
+	public ResponseEntity<?> deleteAll(){
+		Map<String,Object> response= new HashMap<>();
+		
+		try {
+			clienteService.deleteAll(clienteService.findAll());
+		} catch (DataAccessException e) {
+			response.put("mensaje","Error al eliminar los clientes de la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje", "los clientes han sido borrados");
+		
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+		
+	}
+	
+	
 }

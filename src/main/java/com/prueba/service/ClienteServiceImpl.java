@@ -30,7 +30,14 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	@Transactional
 	public void delete(Long id){
-		clienteDao.deleteById(id);;
+		clienteDao.deleteById(id);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteAll(List<Cliente> lista) {
+		clienteDao.deleteAll(lista);
+		
 	}
 	
 }
