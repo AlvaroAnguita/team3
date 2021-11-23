@@ -44,7 +44,7 @@ public class ClienteRestController {
 	private ClienteService clienteService;
 	
 	//Petición GET
-	@GetMapping("/clientes")
+	@GetMapping("clientes")
 	@ApiOperation(value = "Devuelve el listado completo de los clientes",
 	  notes = "Devuelve el listado completo con los datos de los clientes", 
 	  response = Cliente.class)
@@ -52,7 +52,7 @@ public class ClienteRestController {
 		return clienteService.findAll();
 	}
 	
-	@GetMapping("/clientes/{id}")
+	@GetMapping("clientes/{id}")
 	@ApiOperation(value = "Devuelve la informacion del cliente dado",
 	  notes = "Devolvera toda la informacion relativa al identificador del cliente dado", 
 	  response = Cliente.class)
@@ -74,7 +74,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Cliente>(cliente,HttpStatus.OK);
 	}
 	
-	@GetMapping("/uploads/img/{nombreFoto:.+}")
+	@GetMapping("uploads/img/{nombreFoto:.+}")
 	@ApiOperation(value = "Muestra la imagen que se ha pasado",
 	  notes = "Dado el nombre de la imagen se mostrara la imagen en el navegador", 
 	  response = Cliente.class)
@@ -98,7 +98,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
 	}
 	
-	@PostMapping("/clientes")
+	@PostMapping("clientes")
 	@ApiOperation(value = "Crea un cliente",
     notes = "Se recibe la informacion relativa a un cliente para crearlo y almacenarlo en la base de datos", 
     response = Cliente.class)
@@ -118,7 +118,7 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/clientes/upload")
+	@PostMapping("clientes/upload")
 	@ApiOperation(value = "Sube una imagen de un usuario dado",
     notes = "Dada una imagen y el identificador del cliente al cual se le asociara la imagen y se subira a la carpeta uploads", 
     response = Cliente.class)
@@ -160,7 +160,7 @@ public class ClienteRestController {
 	}
 	
 	
-	@PutMapping("/clientes/{id}")
+	@PutMapping("clientes/{id}")
 	@ApiOperation(value = "Actualiza la informacion de un cliente",
     notes = "Dado un cliente y su informacion se actualizara la informacion necesaria en la base de datos", 
     response = Cliente.class)
