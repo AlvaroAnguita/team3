@@ -35,7 +35,7 @@ import com.prueba.service.ClienteService;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/team3")
 public class ClienteRestController {
 	@Autowired
 	private ClienteService clienteService;
