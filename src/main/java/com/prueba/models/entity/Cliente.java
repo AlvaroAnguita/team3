@@ -24,7 +24,8 @@ public class Cliente implements Serializable {
 	@Column(nullable=false)
 	private String nombre;
 	
-	@Column(nullable=false)
+
+	@Column(name="apellidos")
 	private String apellido;
 	
 	@Column(nullable = false,unique = true)
@@ -36,6 +37,7 @@ public class Cliente implements Serializable {
 	@Column(nullable=false)
 	private String direccion;
 	
+	@Column(name="codigopostal")
 	private int codigoP;
 	
 	private String imagen;
