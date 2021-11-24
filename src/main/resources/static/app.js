@@ -22,7 +22,7 @@ const getUsersHtmlCode =(user)=>{
     htmlCode+=`<th>${user.direccion}</th>`;
     htmlCode+=`<th>${user.codigoP}</th>`;
     htmlCode+=`<th>${user.imagen}</th>`;
-      htmlCode+=`<th><button type="button" id=${user.id} class="btn js-borrar btn-danger">Borrar</button></th>`;
+    htmlCode+=`<th><button type="button" id=${user.id} class="btn js-borrar btn-danger">Borrar</button></th>`;
     htmlCode+=`</tbody>`;
     return htmlCode;
 };
