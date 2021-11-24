@@ -8,7 +8,7 @@ import com.prueba.models.dao.ClienteDao;
 import com.prueba.models.entity.Cliente;
 
 @Service
-public class ClienteServideImpl implements ClienteService{
+public class ClienteServiceImpl implements ClienteService{
 	@Autowired
 	private ClienteDao clienteDao;
 	
@@ -30,7 +30,14 @@ public class ClienteServideImpl implements ClienteService{
 	@Override
 	@Transactional
 	public void delete(Long id){
-		clienteDao.deleteById(id);;
+		clienteDao.deleteById(id);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteAll(List<Cliente> lista) {
+		clienteDao.deleteAll(lista);
+		
 	}
 	
 }
