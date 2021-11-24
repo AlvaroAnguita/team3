@@ -1,55 +1,61 @@
 "use strict";
-let data = [];
+const listUsers = document.querySelector(".js-listUsers");
+let usersData=[];
+
+const getApiData=()=>{
 fetch('http://localhost:8080/team3/clientes')
-	.then((res) => res.json())
-	.then((data) => {
-		data = data;
-		console.log(data);
-		renderAlumnos();
-	});
+.then((response) => response.json())
+.then((data) => {
+    usersData = data;
+    paintUsers();
+});
+};
 
+const getUsersHtmlCode =(user)=>{
+    let htmlCode="";
+    htmlCode+=`<tbody>`;
+    htmlCode+=`<th class="js-user">${user.nombre}</th>`;
+    htmlCode+=`<th>${user.apellido}</th>`;
+    htmlCode+=`<th>${user.dni}</th>`;
+    htmlCode+=`<th>${user.telefono}</th>`;
+    htmlCode+=`<th>${user.email}</th>`;
+    htmlCode+=`<th>${user.direccion}</th>`;
+    htmlCode+=`<th>${user.codigoP}</th>`;
+    htmlCode+=`<th>${user.imagen}</th>`;
+      htmlCode+=`<th><button type="button" id=${user.id} class="btn js-borrar btn-danger">Borrar</button></th>`;
+    htmlCode+=`</tbody>`;
+    return htmlCode;
+};
 
-const nombre = document.querySelector(".js-nombre");
-const apellidos = document.querySelector(".js-apellido");
-const email = document.querySelector(".js-email");
-const telefono = document.querySelector(".js-telefono");
-const direccion = document.querySelector(".js-direccion");
-const codigoP = document.querySelector(".js-codigoP");
-const imagen = document.querySelector(".js-imagen");
-const dni = document.querySelector(".js-dni");
+const paintUsers = ()=>{
+    let userCode="";
 
-const alumno = document.querySelector(".js-alumno");
-let alumnosHTML = "";
+    for(const user of usersData){
+        userCode+=getUsersHtmlCode(user);
+    }
+    listUsers.innerHTML=userCode;
+listenUser();
+};
 
-const renderAlumnos = () => {
-
-	for (const iterator of data) {
-		nombre.innerHTML = iterator.nombre;
-		apellidos.innerHTML = iterator.apellido;
-		email.innerHTML = iterator.email;
-		telefono.innerHTML = iterator.telefono;
-		direccion.innerHTML = iterator.direccion;
-		codigoP.innerHTML = iterator.codigoP;
-		imagen.innerHTML = iterator.imagen;
-		dni.innerHTML = iterator.dni;
-
-	};
+const listenUser =()=>{
+const clickedUser = document.querySelectorAll(".js-borrar");
+for(const clickUser of clickedUser){
+    clickUser.addEventListener("click", deleteUser);
 }
+};
 
-const borrarAlum = document.querySelector(".js-borrar");
+const deleteUser=(ev)=>{
+const userId = parseInt(ev.currentTarget.id);
+fetch(`http://localhost:8080/team3/clientes/${userId}`,{ method:"DELETE"})
+.then((response) => response.json())
+.then((data) => {
+    usersData = data;
+    console.log(data.mensaje);
+getApiData();
+});
+};
 
-const borrarAlumno = () => {
-	fetch('http://localhost:8080/team3/clientes/1', {
-		method: "DELETE"
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			data = data;
-			console.log(data.mensaje);
-
-		});
-}
-borrarAlum.addEventListener("click", borrarAlumno);
+getApiData();
 
 
 const btnSubmitCrear = document.querySelector(".js-formCreate");
@@ -92,3 +98,45 @@ const crearAlumno = (ev) => {
 
 }
 btnSubmitCrear.addEventListener("submit", crearAlumno);
+
+
+const btnSubmitActualizar = document.querySelector(".js-formActualizar");
+
+const actualizarAlumno = (ev) => {
+	ev.preventDefault();
+	const nombre = document.querySelector(".js-nombreA").value;
+	const apellidos = document.querySelector(".js-apellidosA").value;
+	const email = document.querySelector(".js-emailA").value;
+	const telefono = document.querySelector(".js-telefonoA").value;
+	const direccion = document.querySelector(".js-direccionA").value;
+	const codigoP = document.querySelector(".js-cpA").value;
+	const imagen = document.querySelector(".js-imagenA").value;
+	const dni = document.querySelector(".js-dniA").value;
+
+	const alumno = {
+		nombre: nombre,
+		apellido: apellidos,
+		email: email,
+		telefono: telefono,
+		direccion: direccion,
+		codigoP: codigoP,
+		imagen: imagen,
+		dni: dni
+	}
+
+	fetch('http://localhost:8080/team3/clientes/${id}', {
+		method: "POST",
+		body: JSON.stringify(alumno),
+		headers: { "Content-Type": "application/json" }
+	})
+
+		.then((res) => res.json())
+		.then((data) => {
+			data = data;
+			console.log(data.mensaje);
+
+		});
+
+
+}
+btnSubmitActualizar.addEventListener("submit", actualizarAlumno);

@@ -27,37 +27,24 @@
 </head>
 <body>
 
-	<button type="button" class="btn btn-primary">Actualizar</button>
-	<button type="button" class="btn btn-secondary">Crear</button>
-	<button type="button" class="btn js-borrar btn-danger">Borrar</button>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Nombre</th>
-				<th scope="col">Apellido</th>
-				<th scope="col">DNI</th>
-				<th scope="col">Telefono</th>
-				<th scope="col">Email</th>
-				<th scope="col">Direccion</th>
-				<th scope="col">C.P</th>
-				<th scope="col">Imagen</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="js-alumno">
-				<th scope="row"></th>
-				<td class="js-nombre"></td>
-				<td class="js-apellido"></td>
-				<td class="js-dni"></td>
-				<td class="js-telefono"></td>
-				<td class="js-email"></td>
-				<td class="js-direccion"></td>
-				<td class="js-cPostal"></td>
-				<td class="js-imagen"></td>
-			</tr>				
-		</tbody>
-		</table>
+<h1 class="title">Listado de Clientes</h1>
+
+    <table class="table table-responsive table-bordered table-striped">
+        <thead>
+        <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Dirección</th>
+        <th>C.P.</th>
+        <th>Imagen</th>
+        </tr>
+        </thead>
+        <tbody class="js-listUsers"></tbody>
+             </table>
+
 		<details>
 			<summary>Crear alumno</summary>
 			<div class="form js-formCreate">
@@ -109,7 +96,7 @@
 		</details>
 		<details>
 			<summary>Actualizar alumno</summary>
-			<div class="form">
+			<div class="form js-formActualizar">
 				<form>
 					<div class="mb-3">
 						<label for="exampleInput9" class="form-label">Nombre</label>
