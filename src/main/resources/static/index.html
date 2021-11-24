@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+<title>Team3</title>
+</head>
+<body>
+
+	<button type="button" class="btn btn-primary">Actualizar</button>
+	<button type="button" class="btn btn-secondary">Crear</button>
+	<button type="button" class="btn js-borrar btn-danger">Borrar</button>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">DNI</th>
+				<th scope="col">Telefono</th>
+				<th scope="col">Email</th>
+				<th scope="col">Direccion</th>
+				<th scope="col">C.P</th>
+				<th scope="col">Imagen</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="js-alumno">
+				<th scope="row"></th>
+				<td class="js-nombre"></td>
+				<td class="js-apellido"></td>
+				<td class="js-dni"></td>
+				<td class="js-telefono"></td>
+				<td class="js-email"></td>
+				<td class="js-direccion"></td>
+				<td class="js-cPostal"></td>
+				<td class="js-imagen"></td>
+			</tr>				
+		</tbody>
+		</table>
+		<details>
+			<summary>Crear alumno</summary>
+			<div class="form">
+				<form>
+					<div class="mb-3">
+						<label for="exampleInput1" class="form-label">Nombre</label>
+						<input type="email" class="form-control" id="exampleInput1"
+							aria-describedby="emailHelp" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput2" class="form-label">Apellidos</label>
+						<input type="password" class="form-control"
+							id="exampleInput2" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput3" class="form-label">Email</label>
+						<input type="password" class="form-control"
+							id="exampleInput3" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput4" class="form-label">Telefono</label>
+						<input type="password" class="form-control"
+							id="exampleInput4" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput5" class="form-label">Direccion</label>
+						<input type="password" class="form-control"
+							id="exampleInput5" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput6" class="form-label">Imagen</label>
+						<input type="password" class="form-control"
+							id="exampleInput6" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput7" class="form-label">C.P</label>
+						<input type="password" class="form-control"
+							id="exampleInput7" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput8" class="form-label">DNI</label>
+						<input type="password" class="form-control"
+							id="exampleInput8" />
+					</div>
+
+					<button type="submit" class="btn btn-crear">Submit</button>
+				</form>
+			</div>
+		</details>
+		<details>
+			<summary>Actualizar alumno</summary>
+			<div class="form">
+				<form>
+					<div class="mb-3">
+						<label for="exampleInput9" class="form-label">Nombre</label>
+						<input type="email" class="form-control" id="exampleInput9"
+							aria-describedby="emailHelp" />
+
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput10" class="form-label">Apellidos</label>
+						<input type="password" class="form-control"
+							id="exampleInput10" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput11" class="form-label">Email</label>
+						<input type="password" class="form-control"
+							id="exampleInput11" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput12" class="form-label">Telefono</label>
+						<input type="password" class="form-control"
+							id="exampleInput12" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput13" class="form-label">Direccion</label>
+						<input type="password" class="form-control"
+							id="exampleInput13" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput14" class="form-label">Imagen</label>
+						<input type="password" class="form-control"
+							id="exampleInput14" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput15" class="form-label">C.P</label>
+						<input type="password" class="form-control"
+							id="exampleInput15" />
+					</div>
+					<div class="mb-3">
+						<label for="exampleInput16" class="form-label">DNI</label>
+						<input type="password" class="form-control"
+							id="exampleInput16" />
+					</div>
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</details>
+	
+	<script src="./app.js"></script>
+</body>
+</html>
