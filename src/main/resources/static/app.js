@@ -32,6 +32,7 @@ const renderAlumnos = () => {
 		codigoP.innerHTML = iterator.codigoP;
 		imagen.innerHTML = iterator.imagen;
 		dni.innerHTML = iterator.dni;
+		
 	};
 }
 
@@ -49,3 +50,4 @@ const borrarAlumno = () => {
 		});
 }
 borrarAlum.addEventListener("click", borrarAlumno);
+
